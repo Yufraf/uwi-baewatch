@@ -1,8 +1,19 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Matches from "./pages/Matches";
+
 function App() {
   return (
-    <div>
-      <h1>UWI BAEWATCH 💘</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/matches" element={<Matches />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
