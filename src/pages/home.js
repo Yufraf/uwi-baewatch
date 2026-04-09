@@ -38,7 +38,7 @@ const bios = [
 const formattedUsers = res.data.results.map((user, i) => ({
   id: i + 1,
   name: `${user.name.first} ${user.name.last}`,
-  age: user.dob.age,
+  age: Math.floor(Math.random() * (26 - 18 + 1)) + 18,
   faculty: faculties[Math.floor(Math.random() * faculties.length)],
   bio: bios[Math.floor(Math.random() * bios.length)],
   image: user.picture.large
