@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Matches() {
   const matches = JSON.parse(localStorage.getItem("matches")) || [];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn");
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   return (
     <div>
@@ -13,8 +23,8 @@ export default function Matches() {
           <p>No matches yet.</p>
         ) : (
           <div className="matches-grid">
-            {matches.map((match, index) => (
-              <div className="match-card" key={index}>
+            {matches.map((match) => (
+              <div className="match-card" key={match.id}>
                 <img src={match.image} alt={match.name} className="match-image" />
                 <h3>{match.name}</h3>
                 <p>{match.faculty}</p>
