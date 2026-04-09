@@ -1,11 +1,10 @@
-import { useEffect, useNavigate } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Chat() {
   const navigate = useNavigate();
   const chats = JSON.parse(localStorage.getItem("chats")) || [];
-
   const [selectedChat, setSelectedChat] = useState(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState({});

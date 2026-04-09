@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 
 export default function Matches() {
   const navigate = useNavigate();
-
   const matches = JSON.parse(localStorage.getItem("matches")) || [];
 
   useEffect(() => {
