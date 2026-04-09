@@ -54,28 +54,24 @@ export default function Home() {
   }, [navigate]);
 
   const handleLike = () => {
-    const currentUser = users[index];
-    if (!currentUser) return;
+  const currentUser = users[index];
+  if (!currentUser) return;
 
-    const existingChats = JSON.parse(localStorage.getItem("chats")) || [];
+  const existingMatches = JSON.parse(localStorage.getItem("matches")) || [];
+  const existingChats = JSON.parse(localStorage.getItem("chats")) || [];
 
-    if (!existingChats.some(chat => chat.id === currentUser.id)) {
-      existingChats.push(currentUser);
-      localStorage.setItem("chats", JSON.stringify(existingChats));
-    }
-
-    setIndex(prev => prev + 1);
-  };
-
-  const handlePass = () => {
-    setIndex(prev => prev + 1);
-  };
-
-  if (users.length === 0) {
-    return <div>Loading profiles...</div>;
+  if (!existingMatches.some((match) => match.id === currentUser.id)) {
+    existingMatches.push(currentUser);
+    localStorage.setItem("matches", JSON.stringify(existingMatches));
   }
 
-  const currentUser = users[index];
+  if (!existingChats.some((chat) => chat.id === currentUser.id)) {
+    existingChats.push(currentUser);
+    localStorage.setItem("chats", JSON.stringify(existingChats));
+  }
+
+  setIndex(index + 1);
+};
 
   return (
     <>
