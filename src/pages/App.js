@@ -5,7 +5,7 @@ import Signup from "./signup";
 import Home from "./home";
 import Matches from "./matches";
 import Chat from "./Chat";
-import Profile from "./Proflie";
+import Profile from "./Profile";
 import Settings from "./Settings";
 
 function App() {
