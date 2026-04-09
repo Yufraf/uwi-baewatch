@@ -4,7 +4,8 @@ import Navbar from "../components/Navbar";
 
 export default function Chat() {
   const navigate = useNavigate();
-  const chats = JSON.parse(localStorage.getItem("chats")) || [];
+  const [chats, setChats] = useState(
+  JSON.parse(localStorage.getItem("chats")) || [] );
   const [selectedChat, setSelectedChat] = useState(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState({});
@@ -15,6 +16,13 @@ export default function Chat() {
       navigate("/login");
     }
   }, [navigate]);
+
+  const clearChats = () => {
+  localStorage.removeItem("chats");
+  setChats([]);
+  setSelectedChat(null);
+  setMessages({});
+};
 
   const sendMessage = () => {
     if (!message.trim() || !selectedChat) return;
@@ -36,6 +44,9 @@ export default function Chat() {
       <Navbar />
       <div className="page">
         <h2>Chats</h2>
+        <button onClick={clearChats} style={{ marginBottom: "10px" }}>
+      Clear All Chats
+    </button>
 
         {chats.length === 0 ? (
           <p>No chats yet. Like someone first from the home page.</p>
