@@ -18,10 +18,12 @@ export default function Home() {
   const handleLike = () => {
     const currentUser = users[index];
     const existingMatches = JSON.parse(localStorage.getItem("matches")) || [];
-    if (currentUser) {
+
+    if (!existingMatches.some((match) => match.id === currentUser.id)) {
       existingMatches.push(currentUser);
       localStorage.setItem("matches", JSON.stringify(existingMatches));
     }
+
     setIndex(index + 1);
   };
 
