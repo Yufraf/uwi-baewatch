@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Matches() {
   const navigate = useNavigate();
-  const matches = JSON.parse(localStorage.getItem("matches")) || [];
+  const [matches, setMatches] = useState(
+    JSON.parse(localStorage.getItem("matches")) || []
+  );
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
@@ -12,6 +14,16 @@ export default function Matches() {
       navigate("/login");
     }
   }, [navigate]);
+
+  const removeMatch = (id) => {
+    const updatedMatches = matches.filter((match) => match.id !== id);
+    setMatches(updatedMatches);
+    localStorage.setItem("matches", JSON.stringify(updatedMatches));
+
+    const chats = JSON.parse(localStorage.getItem("chats")) || [];
+    const updatedChats = chats.filter((chat) => chat.id !== id);
+    localStorage.setItem("chats", JSON.stringify(updatedChats));
+  };
 
   return (
     <div>
@@ -27,8 +39,9 @@ export default function Matches() {
               <div className="match-card" key={match.id}>
                 <img src={match.image} alt={match.name} className="match-image" />
                 <h3>{match.name}</h3>
-                <p>{match.faculty}</p>
+                <p className="faculty-badge">{match.faculty}</p>
                 <p>{match.bio}</p>
+                <button onClick={() => removeMatch(match.id)}>Remove</button>
               </div>
             ))}
           </div>
