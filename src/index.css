@@ -102,3 +102,14 @@ button {
   width: 100%;
   border-radius: 10px;
 }
+
+.faculty-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 8px 0;
+  background: #ffe3ee;
+  color: #c2185b;
+}

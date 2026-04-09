@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Matches() {
-  const matches = JSON.parse(localStorage.getItem("matches")) || [];
   const navigate = useNavigate();
+
+  const matches = JSON.parse(localStorage.getItem("matches")) || [];
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
@@ -37,4 +38,3 @@ export default function Matches() {
     </div>
   );
 }
-<h3>Total Matches: {matches.length}</h3>
