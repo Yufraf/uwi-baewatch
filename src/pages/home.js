@@ -8,6 +8,7 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const currentUser = localStorage.getItem("currentUser") || "User";
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
@@ -21,7 +22,6 @@ export default function Home() {
         const res = await axios.get("https://randomuser.me/api/?results=10");
 
         const faculties = ["FST", "FSS", "FHE", "Medicine", "FFA", "Law"];
-
         const bios = [
           "Always down for doubles and a good lime.",
           "Study hard, lime harder 😎",
@@ -38,15 +38,15 @@ export default function Home() {
         const formattedUsers = res.data.results.map((user, i) => ({
           id: i + 1,
           name: `${user.name.first} ${user.name.last}`,
-          age: user.dob.age,
-          faculty: faculties[i % faculties.length],
-          bio: bios[i % bios.length],
+          age: Math.floor(Math.random() * (26 - 18 + 1)) + 18,
+          faculty: faculties[Math.floor(Math.random() * faculties.length)],
+          bio: bios[Math.floor(Math.random() * bios.length)],
           image: user.picture.large
         }));
 
         setUsers(formattedUsers);
-      } catch (error) {
-        console.error("Error fetching users:", error);
+      } catch (err) {
+        console.log("API error:", err);
       }
     };
 
@@ -54,49 +54,50 @@ export default function Home() {
   }, [navigate]);
 
   const handleLike = () => {
-  const currentUser = users[index];
-  if (!currentUser) return;
+    const selectedUser = users[index];
+    if (!selectedUser) return;
 
-  const existingMatches = JSON.parse(localStorage.getItem("matches")) || [];
-  const existingChats = JSON.parse(localStorage.getItem("chats")) || [];
+    const existingMatches = JSON.parse(localStorage.getItem("matches")) || [];
+    const existingChats = JSON.parse(localStorage.getItem("chats")) || [];
 
-  if (!existingMatches.some((match) => match.id === currentUser.id)) {
-    existingMatches.push(currentUser);
-    localStorage.setItem("matches", JSON.stringify(existingMatches));
-  }
+    if (!existingMatches.some((match) => match.id === selectedUser.id)) {
+      existingMatches.push(selectedUser);
+      localStorage.setItem("matches", JSON.stringify(existingMatches));
+    }
 
-  if (!existingChats.some((chat) => chat.id === currentUser.id)) {
-    existingChats.push(currentUser);
-    localStorage.setItem("chats", JSON.stringify(existingChats));
-  }
+    if (!existingChats.some((chat) => chat.id === selectedUser.id)) {
+      existingChats.push(selectedUser);
+      localStorage.setItem("chats", JSON.stringify(existingChats));
+    }
 
-  setIndex(index + 1);
-};
+    setIndex(index + 1);
+  };
+
+  const handleDislike = () => {
+    setIndex(index + 1);
+  };
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="page center">
-        <h2 style={{ marginBottom: "20px" }}>Discover Students Near You</h2>
+        <h2>Discover People</h2>
+        <h3>Welcome, {currentUser}!</h3>
 
-        {currentUser ? (
-          <SwipeCard user={currentUser} />
+        {users.length === 0 ? (
+          <p>Loading profiles...</p>
         ) : (
-          <div className="card">
-            <h3>No more profiles to show</h3>
-            <p>You've seen everyone!</p>
-          </div>
+          <>
+            <SwipeCard user={users[index]} />
+            {users[index] && (
+              <div className="button-row">
+                <button onClick={handleDislike}>❌ Pass</button>
+                <button onClick={handleLike}>❤️ Like</button>
+              </div>
+            )}
+          </>
         )}
-
-        <div className="button-row">
-          <button onClick={handlePass} style={{ background: "#f44336" }}>
-            Pass
-          </button>
-          <button onClick={handleLike} style={{ background: "#8A9A7F" }}>
-            Like ❤️
-          </button>
-        </div>
       </div>
-    </>
+    </div>
   );
 }
