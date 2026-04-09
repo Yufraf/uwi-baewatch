@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const [name, setName] = useState(localStorage.getItem("currentUser") || "");
   const [bio, setBio] = useState(localStorage.getItem("userBio") || "");
   const [faculty, setFaculty] = useState(localStorage.getItem("userFaculty") || "");
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn");
+    if (loggedIn !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const saveProfile = () => {
     localStorage.setItem("currentUser", name);

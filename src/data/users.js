@@ -1,11 +1,11 @@
 export const users = [
   {
     id: 1,
-    name: "Khan",
+    name: "Aaliyah",
     age: 20,
     faculty: "FST",
     bio: "Loves doubles, coding, and beach limes.",
-    image: "https://www.hollywoodreporter.com/wp-content/uploads/2010/12/shah_rukh_khan_a_p.jpg"
+    image: "https://via.placeholder.com/300x350?text=Aaliyah"
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const users = [
     age: 22,
     faculty: "Engineering",
     bio: "Football, music, and caffeine.",
-    image: "https://hips.hearstapps.com/hmg-prod/images/adam-sandler-at-the-spaceman-press-conference-during-the-news-photo-1724945176.jpg?crop=0.651xw:0.969xh;0.239xw,0.0313xh&resize=1200:*"
+    image: "https://via.placeholder.com/300x350?text=Daniel"
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const users = [
     age: 21,
     faculty: "Humanities",
     bio: "Reader, singer, and movie night expert.",
-    image: "https://wfuogb.com/wp-content/uploads/2024/09/Sabrina-Carpenter-Short-n-Sweet-800x1200.webp"
+    image: "https://via.placeholder.com/300x350?text=Kiara"
   },
   {
     id: 4,
@@ -29,6 +29,6 @@ export const users = [
     age: 23,
     faculty: "Social Sciences",
     bio: "Gym, memes, and group study sessions.",
-    image: "https://www.instyle.com/thmb/rir3YSUyyUwow2rPDMfmPwsM3zw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/122416-DifferentNamesCelebrities-33-ed6235ef6ac542ecbe17274e9d335175.jpg"
+    image: "https://via.placeholder.com/300x350?text=Ryan"
   }
 ];
