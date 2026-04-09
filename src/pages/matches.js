@@ -37,3 +37,4 @@ export default function Matches() {
     </div>
   );
 }
+<h3>Total Matches: {matches.length}</h3>
