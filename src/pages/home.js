@@ -22,8 +22,6 @@ export default function Home() {
 
         const faculties = ["FST", "FSS", "FHE", "Medicine", "FFA", "Law"];
 
-      const faculties = ["FST", "FSS", "FHE", "Medicine", "FFA", "Law"];
-
 const bios = [
   "Always down for doubles and a good lime.",
   "Study hard, lime harder 😎",
