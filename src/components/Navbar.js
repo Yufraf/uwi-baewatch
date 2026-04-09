@@ -14,6 +14,7 @@ export default function Navbar() {
       <h2>UWI BAEWATCH 💘</h2>
       <div className="nav-links">
         <Link to="/home">Home</Link>
+        <Link to="/matches">Matches</Link>
         <Link to="/chat">Chat</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/settings">Settings</Link>
