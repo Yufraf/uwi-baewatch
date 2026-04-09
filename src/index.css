@@ -1,26 +1,28 @@
-/* UWI BAEWATCH - Global Styles */
-
 body {
   margin: 0;
-  font-family: Georgia, serif;
-  background: #F5EDE3;     /* Beige background */
-  color: #3C2F2F;
+  font-family: Arial, sans-serif;
+  background: #fff0f5;
+  color: #222;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #8A9A7F;     /* Sage Green */
+  background: #ff4d88;
   color: white;
   padding: 15px 25px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links button {
   color: white;
   text-decoration: none;
   margin-left: 15px;
   font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .page {
@@ -48,7 +50,7 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background: #8A9A7F;     /* Sage Green */
+  background: #ff4d88;
   color: white;
   font-weight: bold;
 }
