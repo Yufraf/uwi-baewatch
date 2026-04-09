@@ -3,8 +3,8 @@ import Landing from "./landing";
 import Login from "./Login";
 import Signup from "./signup";
 import Home from "./home";
-import Chat from "./Chat";
 import Matches from "./matches";
+import Chat from "./Chat";
 import Profile from "./Profile";
 import Settings from "./Settings";
 
